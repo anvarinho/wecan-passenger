@@ -1,0 +1,79 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="form-container">
+    <div class="wrapper" data-aos="zoom-in">
+      {% if page == 'login' %}
+        <div class="form-wrapper sign-in">
+          <form action="" method="POST">
+            {% csrf_token %}
+            <h2 class="login-h2">Вход</h2>
+            {% if messages %}
+              <ul class="messages">
+                  {% for message in messages %}
+                  <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                  {% endfor %}
+              </ul>
+            {% endif %}
+            <div class="input-group">
+              <input id="username" name="username" type="text" placeholder="996 000 00 00 00"/>
+              <label for="">Номер телефона</label>
+            </div>
+            <div class="input-group">
+              <input id="password" name="password" type="password"/>
+              <label for="">Пароль</label>
+            </div>
+            <button type="submit">Войти</button>
+            <div class="signup-link">
+              <p>Еще нет аккаунта? <a href="{% url 'register' %}" class="signupbtn-lnk"> Зарегистрироваться</a></p>
+            </div>
+            <div class="social-platform">
+            </div>
+          </form>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+          <script>
+            $(document).ready(function () {
+              console.log('hello')
+              $('#username').inputmask('+\\9\\96(999)99-99-99');
+            })
+          </script>
+        </div>
+      {% else %}
+        <div class="form-wrapper sign-up">
+          <form method='POST' action="">
+            <h2 class="login-h2">Регистрация</h2>
+            <div>
+              {% if form.errors %}
+              <ul>
+                  {% for key,value in form.errors.items %}
+                  <li>{{ value|escape }}</li>
+                  {% endfor %}
+              </ul>
+              {% endif %}
+          </div>
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="input-group">
+              {{field}}
+              <label for="">{{field.label}}</label>
+            </div>
+            {% endfor %}
+            <button type="submit">Регистрация</button>
+            <div class="signup-link">
+              <p>Уже есть аккаунт? <a href="{% url 'login' %}" class="signinbtn-lnk">Войти</a></p>
+            </div>
+          </form>
+        </div>
+        {% endif %}
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        console.log('hello')
+        $('#id_username').inputmask('+\\9\\96(999)99-99-99');
+      })
+    </script>
+</div>
+{% endblock content %}

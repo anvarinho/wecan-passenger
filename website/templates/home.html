@@ -1,0 +1,134 @@
+{% extends 'main.html' %}
+{% load static %}
+<!-- home section starts  -->
+{% block content %}
+<section class="home" id="home">
+    <div class="home-slider">
+            <div class="box promo" >
+                <div class="content" data-aos="zoom-in">
+                    <h3>Платформа поиска исполнителей</h3>
+                    <p>Поможем найти надежного человека для различных заданий</p>
+                    <div class="button">
+                        <a href="{% url 'create' %}" class="btn">Создать заявку</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section>
+
+<!-- home section ends -->
+
+<!-- blogs section starts  -->
+
+<section class="blogs container" id="blogs">
+    <h1 class="heading">Более <span>1000 </span>исполнителей по г. Бишкек с реальными отзывами по категориям:</h1>
+    <div class="box-container">
+        <div class="box">
+            <div class="content">
+                <h3><i class="fa-solid fa-house"></i>  Бытовой ремонт</h3>
+            </div>
+        </div>
+        <div class="box">
+            <div class="content">
+                <h3><i class="fa-sharp fa-solid fa-desktop"></i>  Компьютерная помощь</h3>
+            </div>
+        </div>
+        <div class="box">
+            <div class="content">
+                <h3><i class="fa-solid fa-screwdriver-wrench"></i>   Ремонт и установка техники</h3>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- blogs section ends -->
+
+<section class="services container" id="services">
+
+    <h1 class="heading">
+        Как работает платформа
+    </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <h2>1</h2>
+            <img src="{% static '/icons/публикация заявки.png' %}" alt="">
+            <h3>Публикация заявки</h3>
+            <p>Создайте задание, выберите категорию, опишите, что и когда нужно сделать и опубликуйте свое задание</p>
+        </div>
+        <div class="box">
+            <h2>2</h2>
+            <img src="{% static '/icons/получите отклики.png' %}" alt="">
+            <h3>Получите отклики</h3>
+            <p> После публикации задания, исполнители могут отправить заказчику свой отклик с предложением</p>
+        </div>
+        <div class="box">
+            <h2>3</h2>
+            <img src="{% static '/icons/выбор исполнителя.png' %}" alt="">
+            <h3>Выбор исполнителя</h3>
+            <p>Выберите конкретного исполнителя, просмотрев основную информацию о нем в профиле</p>
+        </div>
+    </div>
+
+</section>
+
+
+
+<section class="about__achievements">
+    <div class="container achievements__container">
+        <div class="achievements__left">
+            <img src="{% static '/img/holding-smartphone.png' %}" alt="">
+        </div>
+        <div class="achievements__right">
+            <h1>Приложение WeCan.kg
+                скачайте и пользуйтесь где угодно</h1>
+            <p>Публикуйте задания и ищите исполнителей в любом месте со своего мобильного устройства. Загрузите приложение на свой мобильный, отсканировав QR-код или перейдя по ссылке для скачивания</p>
+            <div class="achievement__cards">
+                <article class="achievement__card">
+                    <span class="achievements__icon"><img src="{% static 'icons/qr-codeforappstore.png' %}" alt="" class="app__img"></span>
+                    <img src="{% static '/icons/App Store.png' %}" alt="" class="app-store-icon">
+                </article>
+                <article class="achievement__card">
+                    <span class="achievements__icon"><img src="{% static 'icons/qr-codeforappstore.png' %}" alt="" class="app__img"></span>
+                    <img src="{% static '/icons/Google play.png' %}" alt="" class="app-store-icon">
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="social-services container">
+
+    <h1 class="heading">
+        Присоединяйтесь к нам в социальных сетях
+    </h1>
+    <div class="social-container">
+        <div class="box">
+            <a href="https://www.instagram.com/wecankg/"><img src="{% static '/icons/instagram.png' %}" alt=""></a>            
+        </div>
+
+        <div class="box">
+            <a href="https://vk.com/wecankg"> <img src="{% static '/icons/Vkontakte.png' %}" alt=""></a>
+        </div>
+
+        <div class="box">
+            <a href="https://www.facebook.com/wecankgs"><img src="{% static '/icons/Facebook.png' %}" alt=""></a>
+        </div>
+
+        <div class="box">
+            <a href="https://twitter.com/WeCan_kg"><img src="{% static '/icons/Twitter.png' %}" alt=""></a>
+        </div>
+    </div>
+
+</section>
+
+<section class="about container">
+    <h1 class="heading">
+        Ваше задание -
+        Наше исполнение!</br>
+        Уже выполнено заявок:  {{tasks_count}}
+    </h1>
+</section>
+
+{% include 'benefits.html' %}
+{% endblock content %}

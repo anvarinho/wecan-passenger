@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<section class="tasks" style="min-height: 100vh; margin-top: 5rem;">
+    {% if request.user.is_staff == False %}
+    <div class="btn-become">
+        <h1>Вы можете стать исполнителем сервиса и зарабатывать</h1>
+        <button>Начать</button>
+    </div>
+    {% endif %}
+    <h1 style="padding: 3rem; font-size: 3rem;">Исполнители</h1>
+    <div class="team__container">
+        {% for user in stuff %}
+        <a class="team__member" href="{% url 'profile' user.id %}">
+            <div class="team__member-image">
+                {% if user.avatar.url != '/avatar.png' %}
+                <img src="{{user.avatar.url}}" alt="{{user.avatar.url}}"/>
+                {% else %}
+                <img src="{% static 'avatars/avatar.png' %}" alt="{{user.avatar.url}}"/>
+                {% endif %}
+            </div>
+            <div class="team__member-info">
+                <h4>{{user.first_name}} {{user.last_name|make_list|first}}.</h4>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% include 'benefits.html' %}
+{% endblock content %}

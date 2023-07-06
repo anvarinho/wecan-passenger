@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<section class="create-container-body">
+    <div class="create-container task-body" data-aos="zoom-in" >
+        <div class="task-title">Информация о заявке</div>
+        <p>{{task.subcategory.name}}</p>
+        <p>Время заказа: {{task.time}}</p>
+        <p>Стоимость заказа: {{task.price}}</p>
+        {% if offers.count > 0 %}
+        <div class="task-title">Предложения</div>
+        {% else %}
+        <div class="task-title">Предложений еще не поступило</div>
+        <a href="{{request.META.HTTP_REFERER}}" class="btn">Назад</a>
+        {% endif %}
+        
+        <div class="offers">
+            {% for offer in offers %}
+            <a href="{% url 'offer' offer.id %}">
+                <div class="offer">
+                    <p>{{offer.master.name}}</p>
+                    <p>{{offer.timesince}} назад</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        
+        {% comment %} <div class="create-content">
+            <div class="right-side">
+                <div class="topic-text">Информация о заявке</div>
+                <p>{{task.subcategory.name}}</p>
+                <p>Время заказа: {{task.time}}</p>
+                <p>Стоимость заказа: {{task.price}}</p>
+                <p>{{task.description}}</p>
+                {% for offer in offers %}
+                <p>{{offer.master.username}}</p>
+                {% endfor %}
+            </div>
+        </div> {% endcomment %}
+    </div>
+</section>
+{% include 'benefits.html' %}
+{% endblock content %}

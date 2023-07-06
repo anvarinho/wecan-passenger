@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<section class="create-container-body">
+    <div class="create-container" data-aos="zoom-in" >
+        <div class="create-content">
+        <div class="right-side">
+            <div class="topic-text">Оставить заявку можно здесь</div>
+            <p>Если возникли трудности с отпралением заявки можете позвонить по номеру или написать по ссылкам внизу, мы поможем!!!!!</p>
+        <form  method="POST" id="taskForm" enctype="multipart/form-data" data-cities-url="{% url 'load-list' %}">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="input-box">
+              <label for="">{{field.label}} :</label>
+              {{field}}
+            </div>
+            {% endfor %}
+            <div class="button">
+            <input type="submit" value="Отправить" >
+            </div>
+        </form>
+        </div>
+        </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_category").change(function () {
+      var url = $("#taskForm").attr("data-cities-url");  // get the url of the `load_cities` view
+      var categoryId = $(this).val();  // get the selected country ID from the HTML input
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'category': categoryId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_subcategory").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+    });
+  </script>
+
+{% include 'benefits.html' %}
+{% endblock content %}

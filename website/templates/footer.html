@@ -1,0 +1,33 @@
+{% load static %}
+<footer class="footer " id="footer">
+
+    <div class="box-container">
+        <div class="box" >
+            <h3>Полезные ссылки</h3>
+            <a href="{% url 'login' %}"> <i class="fas fa-arrow-right"></i>Войти</a>
+            <a href="{% url 'become' %}"> <i class="fas fa-arrow-right"></i>Стать исполнителем</a>
+            <a href="{% url 'tasks' %}"> <i class="fas fa-arrow-right"></i>Все задания</a>
+            <a href="#"> <i class="fas fa-arrow-right"></i>Правила сервиса</a>
+        </div>
+
+        <div class="box" >
+            <h3>Контакты</h3>
+            <a href="tel:+996555320426"  target="_blank"> <i class="fas fa-phone"></i>+996 (555) 32 04 26</a>
+            <a href="https://wa.me/996555320426?text=Привет!!!"  target="_blank"> <i class="fab fa-whatsapp"></i>+996 (555) 32 04 26</a>
+            <a href="mailto:wecan.kg7@gmail.com"  target="_blank"> <i class="fas fa-envelope"></i> wecan.kg7@gmail.com</a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Бишкек, Раззакова 49</a>
+        </div>
+
+        <div class="box">
+            <h3>Социальные сети</h3>
+            <a href="https://www.facebook.com/wecankgs"  target="_blank"> <i class="fab fa-facebook-f"></i>  Facebook </a>
+            <a href="https://twitter.com/WeCan_kg"  target="_blank"> <i class="fab fa-twitter"></i>  Twitter </a>
+            <a href="https://www.instagram.com/wecankg/"  target="_blank"> <i class="fab fa-instagram"></i>  Instagram </a>
+            <a href="https://vk.com/wecankg"  target="_blank"> <i class="fab fa-vk"></i>  Вконтакте </a>
+        </div>
+
+    </div>
+
+    <div class="credit"><a href="#">WeCan.kg © <span>{% now "Y" %}</a><a href="https://wa.me/79999858060?text=Привет!!!"  target="_blank">Developed by <span>Anvar Jumabaev</a></span></div>
+
+</footer>

@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<section class="create-container-body">
+    <div class="create-container task-body" data-aos="zoom-in" >
+        <div class="task-title">Предложение от {{offer.master.name}}</div>
+        {% for message in messages %}
+        <p>{{message.text}}</p>
+        {% endfor %}
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <button class="btn" type="submit">Принять</button>
+        </form>
+    </div>
+</section>
+{% include 'benefits.html' %}
+{% endblock content %}
+
+{% comment %} <form action="" method="POST" enctype="multipart/form-data">
+    {% if user.is_authenticated and user.is_staff and error == none %}
+    {% csrf_token %}
+    <div class="input-box">
+        <label for="">Ваше сообщение</label>
+        <input id="message" name="message" type="text" placeholder="Отправьте сообщение заказщику"/>
+    </div>
+    <button type="submit">Принять</button>
+    {% elif error == 'error' %}
+    <h1>Вы уже отправили заявку</h1>
+    {% endif %}
+</form> {% endcomment %}
